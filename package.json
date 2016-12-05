@@ -1,0 +1,16 @@
+{
+  "name": "Schedules",
+  "version": "0.1.0",
+  "dependencies": {
+    "ent": "~0.1.0",
+    "express": "~3.3.4",
+    "jquery": "3.1.1",
+    "jsdom": "9.8.3",
+    "socket.io": "~1.2.1"
+  },
+  "author": "Valentin Faugeroux <faugerouxvalentin@gmail.com>",
+  "description": "Bus schedules algorithms !",
+  "scripts": {
+    "start": "node app.js"
+  }
+}
