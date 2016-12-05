@@ -6,8 +6,6 @@ var express = require('express'),
     fs = require('fs'),
     PythonShell = require('python-shell');
 
-var clusters = [];
-
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var xhr = new XMLHttpRequest();
 
@@ -20,13 +18,6 @@ var window = doc.defaultView;
 var $ = require('jQuery');
 $().jquery;
 
-$.get( "https://api-2445581154346.apicast.io/positions?user_key=6ce102b1290d319c0738355a0766f392", function(dataFromPosition) {
-}).done(function(data) {
-    console.log( 'Full get ok' );
-}).fail(function(err) {
-    console.log( err );
-});
-
 // Dossier root fichiers
 app.use(express.static(__dirname + '/'));
 
@@ -37,11 +28,21 @@ app.get('/', function (req, res) {
 
 console.log('Server ON');
 
+var clusters;
+var clustersParsed;
+
 io.sockets.on('connection', function (socket) {
 
     /** 1 - Create position */
-    socket.on('create_position', function(params) {
-        //a
+    socket.on('create_position', function() {
+
+        PythonShell.run('C:\\Python27\\kmeans01.py', function (err, results) {
+            clusters = results;
+            clustersParsed = JSON.parse(clusters[0]);
+
+            console.log(clustersParsed);
+            socket.emit('return_info', clustersParsed);
+        });
     });
 
 });
