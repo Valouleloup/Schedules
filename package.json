@@ -4,9 +4,11 @@
   "dependencies": {
     "ent": "~0.1.0",
     "express": "~3.3.4",
-    "jquery": "3.1.1",
+    "jQuery": "1.7.4",
     "jsdom": "9.8.3",
-    "socket.io": "~1.2.1"
+    "python-shell": "0.4.0",
+    "socket.io": "~1.2.1",
+    "xmlhttprequest": "1.8.0"
   },
   "author": "Valentin Faugeroux <faugerouxvalentin@gmail.com>",
   "description": "Bus schedules algorithms !",

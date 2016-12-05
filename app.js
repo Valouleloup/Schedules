@@ -3,7 +3,29 @@ var express = require('express'),
     server = require('http').createServer(app),
     io = require('socket.io').listen(server),
     ent = require('ent'),
-    fs = require('fs');
+    fs = require('fs'),
+    PythonShell = require('python-shell');
+
+var clusters = [];
+
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var xhr = new XMLHttpRequest();
+
+// Load jsdom, and create a window.
+var jsdom = require("jsdom").jsdom;
+var doc = jsdom();
+var window = doc.defaultView;
+
+// Load jQuery with the simulated jsdom window.
+var $ = require('jQuery');
+$().jquery;
+
+$.get( "https://api-2445581154346.apicast.io/positions?user_key=6ce102b1290d319c0738355a0766f392", function(dataFromPosition) {
+}).done(function(data) {
+    console.log( 'Full get ok' );
+}).fail(function(err) {
+    console.log( err );
+});
 
 // Dossier root fichiers
 app.use(express.static(__dirname + '/'));
