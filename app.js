@@ -28,6 +28,8 @@ app.get('/', function (req, res) {
 
 console.log('Server ON');
 
+var colors = ['rgba(228,76,76,0.8)', 'rgba(224,177,91,0.8)', 'rgba(132,205,86,0.8)', 'rgba(86,205,195,0.8)',
+    'rgba(98,118,247,0.8)', 'rgba(212,95,233,0.8)', 'rgba(5,131,74,0.8)', 'rgba(120,20,9,0.8)'];
 var clusters;
 var clustersParsed;
 
@@ -40,8 +42,21 @@ io.sockets.on('connection', function (socket) {
             clusters = results;
             clustersParsed = JSON.parse(clusters[0]);
 
-            console.log(clustersParsed);
-            socket.emit('return_info', clustersParsed);
+            var series = [];
+
+            var i = 1;
+            clustersParsed.forEach(function(cluster){
+                var group = {
+                    name: 'Cluster ' + i,
+                    color: colors[i-1],
+                    data: cluster
+                };
+                series.push(group);
+                i++;
+            });
+
+            console.log(series);
+            socket.emit('return_info', series);
         });
     });
 
