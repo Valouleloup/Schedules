@@ -371,32 +371,74 @@
             /* RIPPER */
             socket.emit('get_ripper');
 
-            // create an array with nodes
-            var nodes = [
-                {id: 1, label: 'Node 1'},
-                {id: 2, label: 'Node 2'},
-                {id: 3, label: 'Node 3'},
-                {id: 4, label: 'Node 4'}
-            ];
+            socket.on('return_info_ripper', function (ripperData) {
+                console.log(ripperData[1]);
 
-            // create an array with edges
-            var edges = [
-                {from: 1, to: 2, label: 'middle'},
-                {from: 1, to: 3, label: 'top'},
-                {from: 2, to: 4, label: 'horizontal'}
-            ];
+                var ripperNodes = [];
+                var ripperEdges = [];
+                var i = 1;
+                ripperData[1].forEach(function(rule){
+                    if(rule[0] != 'null'){
+                        var node = {
+                            id: 2*i,
+                            label: rule[0]
+                        };
+                        ripperNodes.push(node);
 
-            // create a network
-            var container = document.getElementById('network');
-            var data = {
-                nodes: nodes,
-                edges: edges
-            };
-            var options = {
-                width:'600px',
-                height: '400px'
-            };
-            var network = new vis.Network(container, data, options);
+                        var nodeSchedule = {
+                            id: (2*i)+1,
+                            label: rule[1]
+                        };
+                        ripperNodes.push(nodeSchedule);
+
+                        var edge = {
+                            from: 2*i,
+                            to: 2*(i+1),
+                            label: 'No'
+                        };
+                        ripperEdges.push(edge);
+
+                        var edgeSchedule = {
+                            from: 2*i,
+                            to: (2*i)+1,
+                            label: 'Yes'
+                        };
+                        ripperEdges.push(edgeSchedule);
+                    } else{
+                        var lastNode = {
+                            id: 2*i,
+                            label: rule[1]
+                        };
+                        ripperNodes.push(lastNode);
+                    }
+
+                    i++;
+                });
+
+                // create an array with nodes
+                var nodes = ripperNodes;
+
+                // create an array with edges
+                var edges = ripperEdges;
+
+                // create a network
+                var container = document.getElementById('network');
+                var data = {
+                    nodes: nodes,
+                    edges: edges
+                };
+                var options = {
+                    width:'600px',
+                    height: '400px',
+                    layout: {
+                        hierarchical: {
+                            sortMethod: "directed"
+                        }
+                    }
+                };
+                var network = new vis.Network(container, data, options);
+
+            });
 
 
         </script>

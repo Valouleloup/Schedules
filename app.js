@@ -61,18 +61,22 @@ io.sockets.on('connection', function (socket) {
 
     });
 
-    /** RIPPPER */
+    /** RIPPER */
     socket.on('get_ripper', function() {
 
         var exec = require('child_process').exec;
         var child = exec('java -jar C:\\Python27\\java\\RipperProject.jar C:\\Python27\\java\\test03.txt',
             function (error, stdout, stderr){
-                console.log('Output -> ' + stdout);
+                //var ripperData = JSON.parse(stdout);
+                var rip = '["100.0",[["(daytype = holiday)","3"],["(daytype = weekend_holiday)","2"],["null","1"]],"3"]';
+                var ripperData = JSON.parse(rip);
+                console.log(ripperData);
+                console.log('Ripper ok');
+                socket.emit('return_info_ripper', ripperData);
                 if(error !== null){
-                    console.log("Error -> "+error);
+                    console.log(error);
                 }
             });
-         socket.emit('return_info_ripper');
 
     });
 
