@@ -35,10 +35,10 @@ var clustersParsed;
 
 io.sockets.on('connection', function (socket) {
 
-    /** 1 - Create position */
-    socket.on('create_position', function() {
+    /** K-MEANS */
+    socket.on('get_kmeans', function() {
 
-        PythonShell.run('C:\\Python27\\kmeans01.py', function (err, results) {
+        /*PythonShell.run('C:\\Python27\\kmeans01.py', function (err, results) {
             clusters = results;
             clustersParsed = JSON.parse(clusters[0]);
 
@@ -57,7 +57,23 @@ io.sockets.on('connection', function (socket) {
 
             console.log(series);
             socket.emit('return_info', series);
-        });
+        });*/
+
+    });
+
+    /** RIPPPER */
+    socket.on('get_ripper', function() {
+
+        var exec = require('child_process').exec;
+        var child = exec('java -jar C:\\Python27\\java\\RipperProject.jar C:\\Python27\\java\\test03.txt',
+            function (error, stdout, stderr){
+                console.log('Output -> ' + stdout);
+                if(error !== null){
+                    console.log("Error -> "+error);
+                }
+            });
+         socket.emit('return_info', series);
+
     });
 
 });
