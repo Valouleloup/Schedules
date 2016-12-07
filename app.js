@@ -72,7 +72,7 @@ io.sockets.on('connection', function (socket) {
                     console.log("Error -> "+error);
                 }
             });
-         socket.emit('return_info', series);
+         socket.emit('return_info_ripper');
 
     });
 
