@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+    <%- include('partials/head') %>
+
+    <body>
+
+        <header>
+        	<div class="headerwrapper">
+        		<%- include('partials/header-left') %>
+        		<%- include('partials/header-right') %>
+        	</div>
+        </header>
+
+		<section>
+			<div class="mainwrapper">
+				<%- include('partials/left-panel') %>
+				<div class="mainpanel">
+					<%- include('partials/page-header') %>
+					 <div class="contentpanel">
+					 
+ 					</div>
+				</div>
+			</div>
+		</section>
+		        
+		<%- include('partials/scripts-js') %>
+
+		<script>
+			// Init url
+            var url = 'http://localhost:8080';
+            var socket = io.connect(url);
+		</script>
+		
+	</body>
+</html>

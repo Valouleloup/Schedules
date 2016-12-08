@@ -21,10 +21,33 @@ $().jquery;
 // Dossier root fichiers
 app.use(express.static(__dirname + '/'));
 
+// set the view engine to ejs
+app.set('view engine', 'ejs')
+
 // Home page
-app.get('/', function (req, res) {
+/*app.get('/', function (req, res) {
     res.sendfile(__dirname + '/index.html');
-});
+});*/
+
+// Home page
+app.get('/', (req, res) => {
+  res.render('index')
+})
+
+//DTW page
+app.get('/dtw', (req, res) => {
+  res.render('dtw')
+})
+
+//K-Means page
+app.get('/kmeans', (req, res) => {
+  res.render('kmeans')
+})
+
+//RIPPER page
+app.get('/ripper', (req, res) => {
+  res.render('ripper')
+})
 
 console.log('Server ON');
 
@@ -82,7 +105,7 @@ io.sockets.on('connection', function (socket) {
 
     /** DTW */
     socket.on('get_dtw', function() {
-
+        console.log('Socket OK');
         PythonShell.run('C:\\Python27\\dtw1.py', function (err, results) {
             var series = results;
             var parsedSeries = JSON.parse(series[0]);

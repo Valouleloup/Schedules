@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+    <%- include('partials/head') %>
+
+    <body>
+
+        <header>
+        	<div class="headerwrapper">
+        		<%- include('partials/header-left') %>
+        		<%- include('partials/header-right') %>
+        	</div>
+        </header>
+
+		<section>
+			<div class="mainwrapper">
+				<%- include('partials/left-panel') %>
+				<div class="mainpanel">
+					<%- include('partials/page-header') %>
+					 <div class="contentpanel">
+					 	<div class="row row-stat">
+                        	<h3>DTW</h3>
+                        	<div id="dtw"></div>
+                    	</div>
+ 					</div>
+				</div>
+			</div>
+		</section>
+		        
+		<%- include('partials/scripts-js') %>
+
+		<script>
+			// Init url
+            var url = 'http://localhost:8080';
+            var socket = io.connect(url);
+
+            /* DTW */
+            socket.emit('get_dtw');
+
+            socket.on('return_info_dtw', function (dtwData) {
+                console.log(dtwData);
+
+                var tabIndex = [];
+                for(var i=0;i<dtwData.length;i++){
+                    tabIndex.push(i+1);
+                }
+
+                var series = [];
+                var j = 0;
+                dtwData.forEach(function(trip){
+                    var isVisible;
+                    isVisible = j == 0;
+                    var obj = {
+                        name: 'Trip ' + (j+1),
+                        data: trip,
+                        pointPlacement: 'on',
+                        visible: isVisible
+                    };
+                    series.push(obj);
+                    j++;
+                });
+
+                Highcharts.chart('dtw', {
+
+                    chart: {
+                        polar: true,
+                        type: 'line'
+                    },
+
+                    title: {
+                        text: 'Distance between trips',
+                        x: -80
+                    },
+
+                    pane: {
+                        size: '80%'
+                    },
+
+                    xAxis: {
+                        categories: tabIndex,
+                        tickmarkPlacement: 'on',
+                        lineWidth: 0
+                    },
+
+                    yAxis: {
+                        gridLineInterpolation: 'polygon',
+                        lineWidth: 0,
+                        min: 0
+                    },
+
+                    tooltip: {
+                        shared: true,
+                        pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
+                    },
+
+                    legend: {
+                        align: 'right',
+                        verticalAlign: 'top',
+                        y: 70,
+                        layout: 'vertical'
+                    },
+
+                    series: series
+
+                });
+            });
+		</script>
+	</body>
+</html>

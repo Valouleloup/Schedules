@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+    <%- include('partials/head') %>
+
+    <body>
+
+        <header>
+        	<div class="headerwrapper">
+        		<%- include('partials/header-left') %>
+        		<%- include('partials/header-right') %>
+        	</div>
+        </header>
+
+		<section>
+			<div class="mainwrapper">
+				<%- include('partials/left-panel') %>
+				<div class="mainpanel">
+					<%- include('partials/page-header') %>
+					 <div class="contentpanel">
+					 	<div class="row row-stat">
+                        	<h3>K-Means</h3>
+                        	<div id="kmeans"></div>
+                    	</div>
+ 					</div>
+				</div>
+			</div>
+		</section>
+		        
+		<%- include('partials/scripts-js') %>
+
+		<script>
+			// Init url
+            var url = 'http://localhost:8080';
+            var socket = io.connect(url);
+
+            /*K-MEANS */
+            socket.emit('get_kmeans');
+            socket.on('return_info', function (data) {
+                console.log(data);
+
+                Highcharts.chart('kmeans', {
+                    chart: {
+                        type: 'scatter',
+                        zoomType: 'xy',
+                        width:1024,
+                        height:600
+                    },
+                    title: {
+                        text: 'Schedules clusters'
+                    },
+                    subtitle: {
+                        text: 'Source: Data 2016'
+                    },
+                    xAxis: {
+                        title: {
+                            enabled: true,
+                            text: 'Height (cm)'
+                        },
+                        startOnTick: true,
+                        endOnTick: true,
+                        showLastLabel: true
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Weight (kg)'
+                        }
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'left',
+                        verticalAlign: 'top',
+                        x: 100,
+                        y: 100,
+                        floating: true,
+                        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+                        borderWidth: 1
+                    },
+                    plotOptions: {
+                        scatter: {
+                            marker: {
+                                radius: 5,
+                                states: {
+                                    hover: {
+                                        enabled: true,
+                                        lineColor: 'rgb(100,100,100)'
+                                    }
+                                }
+                            },
+                            states: {
+                                hover: {
+                                    marker: {
+                                        enabled: false
+                                    }
+                                }
+                            },
+                            tooltip: {
+                                headerFormat: '<b>{series.name}</b><br>',
+                                pointFormat: '{point.x} cm, {point.y} kg'
+                            }
+                        }
+                    },
+                    series: data
+                });
+            });
+		</script>
+	</body>
+</html>
