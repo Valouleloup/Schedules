@@ -363,7 +363,7 @@
                     if(rule[0] != 'null'){
                         var node = {
                             id: 2*i,
-                            label: rule[0]
+                            label: rule[0].replace(/and/g, 'and\n')
                         };
                         ripperNodes.push(node);
 
@@ -415,7 +415,8 @@
                     height: canvasHeight,
                     layout: {
                         hierarchical: {
-                            sortMethod: "directed"
+                            sortMethod: "directed",
+                            nodeSpacing: 250
                         }
                     }
                 };
