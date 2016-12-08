@@ -38,7 +38,7 @@ io.sockets.on('connection', function (socket) {
     /** K-MEANS */
     socket.on('get_kmeans', function() {
 
-        /*PythonShell.run('C:\\Python27\\kmeans01.py', function (err, results) {
+        PythonShell.run('C:\\Python27\\kmeans01.py', function (err, results) {
             clusters = results;
             clustersParsed = JSON.parse(clusters[0]);
 
@@ -57,7 +57,7 @@ io.sockets.on('connection', function (socket) {
 
             console.log(series);
             socket.emit('return_info', series);
-        });*/
+        });
 
     });
 
@@ -65,11 +65,10 @@ io.sockets.on('connection', function (socket) {
     socket.on('get_ripper', function() {
 
         var exec = require('child_process').exec;
-        var child = exec('java -jar C:\\Python27\\java\\RipperProject.jar C:\\Python27\\java\\test03.txt',
+        var child = exec('java -jar C:\\Python27\\java\\RipperProject.jar C:\\Python27\\java\\test04.txt',
             function (error, stdout, stderr){
-                //var ripperData = JSON.parse(stdout);
-                var rip = '["100.0",[["(daytype = holiday)","3"],["(daytype = weekend_holiday)","2"],["null","1"]],"3"]';
-                var ripperData = JSON.parse(rip);
+                var ripperData = JSON.parse(stdout);
+                //var rip = ["49.72375690607735",[["(christmastime = TRUE)","6"],["(daytype = weekend_holiday) and (eastertime =TRUE)","4"],["(daytype = weekend_holiday) and (month = 2)","4"],["(daytype = weekend_holiday) and (month = 3)","4"],["(daytype = holiday)","5"],["(daytype = weekend_holiday)","5"],["(nonschoolperiod = FALSE)","3"],["null","2"]],"8"];
                 console.log(ripperData);
                 console.log('Ripper ok');
                 socket.emit('return_info_ripper', ripperData);
@@ -77,6 +76,19 @@ io.sockets.on('connection', function (socket) {
                     console.log(error);
                 }
             });
+
+    });
+
+    /** DTW */
+    socket.on('get_dtw', function() {
+
+        PythonShell.run('C:\\Python27\\dtw1.py', function (err, results) {
+            var series = results;
+            var parsedSeries = JSON.parse(series[0]);
+
+            console.log(parsedSeries);
+            socket.emit('return_info_dtw', parsedSeries);
+         });
 
     });
 
