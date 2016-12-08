@@ -55,7 +55,8 @@ io.sockets.on('connection', function (socket) {
                 i++;
             });
 
-            console.log(series);
+            //console.log(series);
+            console.log('K-Means ok');
             socket.emit('return_info', series);
         });
 
@@ -69,7 +70,7 @@ io.sockets.on('connection', function (socket) {
             function (error, stdout, stderr){
                 var ripperData = JSON.parse(stdout);
                 //var rip = ["49.72375690607735",[["(christmastime = TRUE)","6"],["(daytype = weekend_holiday) and (eastertime =TRUE)","4"],["(daytype = weekend_holiday) and (month = 2)","4"],["(daytype = weekend_holiday) and (month = 3)","4"],["(daytype = holiday)","5"],["(daytype = weekend_holiday)","5"],["(nonschoolperiod = FALSE)","3"],["null","2"]],"8"];
-                console.log(ripperData);
+                //console.log(ripperData);
                 console.log('Ripper ok');
                 socket.emit('return_info_ripper', ripperData);
                 if(error !== null){
@@ -86,7 +87,8 @@ io.sockets.on('connection', function (socket) {
             var series = results;
             var parsedSeries = JSON.parse(series[0]);
 
-            console.log(parsedSeries);
+            //console.log(parsedSeries);
+            console.log('DTW ok');
             socket.emit('return_info_dtw', parsedSeries);
          });
 
