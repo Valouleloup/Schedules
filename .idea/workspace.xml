@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="97cb3783-c359-419a-b90b-cb8169b53ad1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/traveltime.ejs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/left-panel.ejs" afterPath="$PROJECT_DIR$/views/partials/left-panel.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/traveltime.ejs" afterPath="$PROJECT_DIR$/views/traveltime.ejs" />
     </list>
     <ignored path="Schedules.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="46" column="14" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+            <state relative-caret-position="-644">
+              <caret line="41" column="10" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -56,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="traveltime.ejs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="traveltime.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/traveltime.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="94" column="21" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="21" />
+            <state relative-caret-position="197">
+              <caret line="70" column="30" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -365,7 +363,7 @@
       <workItem from="1481011486528" duration="3558000" />
       <workItem from="1481035466866" duration="1529000" />
       <workItem from="1481105266352" duration="484000" />
-      <workItem from="1481105967766" duration="29180000" />
+      <workItem from="1481105967766" duration="32128000" />
     </task>
     <task id="LOCAL-00001" summary="jQuery">
       <created>1480945157595</created>
@@ -430,11 +428,18 @@
       <option name="project" value="LOCAL" />
       <updated>1481202426422</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Time travel">
+      <created>1481275281474</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1481275281474</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49529000" />
+    <option name="totallyTimeSpent" value="52477000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -480,7 +485,8 @@
     <MESSAGE value="Add DTW algorithm" />
     <MESSAGE value="Organisation DTW&gt;KMEANS&gt;RIPPER" />
     <MESSAGE value="Node spacing RIPPER" />
-    <option name="LAST_COMMIT_MESSAGE" value="Node spacing RIPPER" />
+    <MESSAGE value="Time travel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Time travel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -671,18 +677,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/traveltime.ejs">
+    <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="94" column="21" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="21" />
+        <state relative-caret-position="-644">
+          <caret line="41" column="10" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
+    <entry file="file://$PROJECT_DIR$/views/traveltime.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="46" column="14" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+        <state relative-caret-position="197">
+          <caret line="70" column="30" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
           <folding />
         </state>
       </provider>
