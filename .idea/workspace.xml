@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="97cb3783-c359-419a-b90b-cb8169b53ad1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/dtw.ejs" afterPath="$PROJECT_DIR$/views/dtw.ejs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/traveltime.ejs" afterPath="$PROJECT_DIR$/views/traveltime.ejs" />
     </list>
     <ignored path="Schedules.iws" />
@@ -37,8 +39,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-644">
-              <caret line="41" column="10" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
+            <state relative-caret-position="376">
+              <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -54,11 +56,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="traveltime.ejs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="traveltime.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/traveltime.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="70" column="30" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
+            <state relative-caret-position="78">
+              <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dtw.ejs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/dtw.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -85,9 +97,10 @@
         <option value="$PROJECT_DIR$/node_modules/jQuery/lib/node-jquery.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/views/partials/left-panel.ejs" />
+        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/views/traveltime.ejs" />
+        <option value="$PROJECT_DIR$/views/dtw.ejs" />
       </list>
     </option>
   </component>
@@ -192,8 +205,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/package.json</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/views/partials/left-panel.ejs</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -201,16 +213,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/views/dtw.ejs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/views/index.ejs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/views/kmeans.ejs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/views/partials/head.ejs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/views/partials/header-left.ejs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/views/partials/header-right.ejs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/views/partials/left-panel.ejs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/views/partials/page-header.ejs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/views/partials/scripts-js.ejs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/views/ripper.ejs</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -218,7 +220,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="true" />
           <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/index.html</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Restored" />
@@ -363,7 +364,7 @@
       <workItem from="1481011486528" duration="3558000" />
       <workItem from="1481035466866" duration="1529000" />
       <workItem from="1481105266352" duration="484000" />
-      <workItem from="1481105967766" duration="32128000" />
+      <workItem from="1481105967766" duration="37883000" />
     </task>
     <task id="LOCAL-00001" summary="jQuery">
       <created>1480945157595</created>
@@ -435,11 +436,18 @@
       <option name="project" value="LOCAL" />
       <updated>1481275281474</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Time travel finished">
+      <created>1481278468868</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1481278468868</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52477000" />
+    <option name="totallyTimeSpent" value="58232000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -486,7 +494,8 @@
     <MESSAGE value="Organisation DTW&gt;KMEANS&gt;RIPPER" />
     <MESSAGE value="Node spacing RIPPER" />
     <MESSAGE value="Time travel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Time travel" />
+    <MESSAGE value="Time travel finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Time travel finished" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -629,14 +638,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/dtw.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/index.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-103">
@@ -679,16 +680,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-644">
-          <caret line="41" column="10" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
+        <state relative-caret-position="376">
+          <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/traveltime.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="70" column="30" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
+        <state relative-caret-position="78">
+          <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/dtw.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
           <folding />
         </state>
       </provider>

@@ -115,15 +115,21 @@ io.sockets.on('connection', function (socket) {
 
     /** DTW */
     socket.on('get_dtw', function() {
-        console.log('Socket OK');
-        PythonShell.run('C:\\Python27\\dtw1.py', function (err, results) {
+        /*PythonShell.run('C:\\Python27\\dtw1.py', function (err, results) {
             var series = results;
             var parsedSeries = JSON.parse(series[0]);
 
             //console.log(parsedSeries);
             console.log('DTW ok');
             socket.emit('return_info_dtw', parsedSeries);
-         });
+         });*/
+
+        PythonShell.run('C:\\Python27\\dtw2.py', function (err, results) {
+            var parsedVariances = JSON.parse(results[0]);
+
+            console.log('DTW ok');
+            socket.emit('return_info_dtw', parsedVariances);
+            });
 
     });
 
