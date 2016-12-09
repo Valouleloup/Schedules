@@ -96,20 +96,27 @@ io.sockets.on('connection', function (socket) {
     });
 
     /** RIPPER */
-    socket.on('get_ripper', function() {
+    socket.on('get_ripper', function(nbClusters) {
 
         var exec = require('child_process').exec;
-        var child = exec('java -jar C:\\Python27\\java\\RipperProject.jar C:\\Python27\\java\\test05.txt',
+        var fileName = 'testK' + nbClusters + '.txt';
+        var child = exec('java -jar C:\\Python27\\java\\RipperProject.jar C:\\Python27\\java\\' + fileName,
             function (error, stdout, stderr){
                 var ripperData = JSON.parse(stdout);
                 //var rip = ["49.72375690607735",[["(christmastime = TRUE)","6"],["(daytype = weekend_holiday) and (eastertime =TRUE)","4"],["(daytype = weekend_holiday) and (month = 2)","4"],["(daytype = weekend_holiday) and (month = 3)","4"],["(daytype = holiday)","5"],["(daytype = weekend_holiday)","5"],["(nonschoolperiod = FALSE)","3"],["null","2"]],"8"];
-                //console.log(ripperData);
+                console.log(ripperData);
                 console.log('Ripper ok');
                 socket.emit('return_info_ripper', ripperData);
                 if(error !== null){
                     console.log(error);
                 }
             });
+
+        fs.readFile('C:\\Python27\\java\\' + fileName, 'utf8', function(err, data) {
+            if (err) throw err;
+            console.log('File test OK');
+            socket.emit('return_test_file', data);
+        });
 
     });
 
