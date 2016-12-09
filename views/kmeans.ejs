@@ -16,12 +16,27 @@
 			<div class="mainwrapper">
 				<%- include('partials/left-panel') %>
 				<div class="mainpanel">
-					<%- include('partials/page-header') %>
-					 <div class="contentpanel">
-					 	<div class="row row-stat">
-                        	<h3>K-Means</h3>
+					<div class="pageheader">
+                        <div class="media">
+                            <div class="pageicon pull-left">
+                                <i class="fa fa-gear"></i>
+                            </div>
+                            <div class="media-body">
+                                <ul class="breadcrumb">
+                                    <li><a href="/"><i class="glyphicon glyphicon-home"></i></a></li>
+                                    <li>K-Means</li>
+                                </ul>
+                                <h4>K-Means</h4>
+                            </div>
+                        </div>
+                    </div>
+					<div class="contentpanel">
+					    <div class="row row-stat">
                         	<div id="kmeans"></div>
-                    	</div>
+                            <div id="loader" class="loading">
+                                <img src="images/loader.gif" alt="loader">
+                            </div>
+                        </div>
  					</div>
 				</div>
 			</div>
@@ -36,8 +51,10 @@
 
             /*K-MEANS */
             socket.emit('get_kmeans');
+
             socket.on('return_info', function (data) {
                 console.log(data);
+                $("#loader").css('display', 'none');
 
                 Highcharts.chart('kmeans', {
                     chart: {

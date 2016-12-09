@@ -16,11 +16,26 @@
 			<div class="mainwrapper">
 				<%- include('partials/left-panel') %>
 				<div class="mainpanel">
-					<%- include('partials/page-header') %>
-					 <div class="contentpanel">
+					<div class="pageheader">
+                        <div class="media">
+                            <div class="pageicon pull-left">
+                                <i class="fa fa-gear"></i>
+                            </div>
+                            <div class="media-body">
+                                <ul class="breadcrumb">
+                                    <li><a href="/"><i class="glyphicon glyphicon-home"></i></a></li>
+                                    <li>DTW</li>
+                                </ul>
+                                <h4>DTW</h4>
+                            </div>
+                        </div>
+                    </div>
+					<div class="contentpanel">
 					 	<div class="row row-stat">
-                        	<h3>DTW</h3>
                         	<div id="dtw"></div>
+                        	<div id="loader" class="loading">
+                                <img src="images/loader.gif" alt="loader">
+                            </div>
                     	</div>
  					</div>
 				</div>
@@ -41,6 +56,7 @@
 
             socket.on('return_info_dtw', function (dtwData) {
                 console.log(dtwData);
+                $("#loader").css('display', 'none');
 
 				var listVariances = [];
 				dtwData.forEach(function(route, i){

@@ -3322,6 +3322,11 @@ body.signin {
 .tg .tg-6k2t{background-color:#D2E4FC;vertical-align:top}
 
 .htable {margin-bottom: 20px}
+
+/*** CSS loader ***/
+.loading img {display: block;margin: 0 auto;}
+#loader {margin-top: 150px;}
+
 /********** 13. MEDIA QUERIES **********/
 /***************************************/
 
