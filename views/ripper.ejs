@@ -32,7 +32,45 @@
                     </div>
 					<div class="contentpanel">
 					 	<div class="row row-stat">
-                        	<div id="network"></div>
+                        	<h3>Networks</h3>
+							<select name="nb-clusters" class="nb-clusters" title="nb-clusters">
+								<option value="2">K = 2</option>
+								<option value="3">K = 3</option>
+								<option value="4">K = 4</option>
+								<option value="5">K = 5</option>
+							</select>
+
+							<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+								<div class="panel panel-default">
+									<div class="panel-heading" role="tab" id="headingOne">
+										<h4 class="panel-title">
+											<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+												Data file for Ripper algorithm
+											</a>
+										</h4>
+									</div>
+									<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+										<div class="panel-body">
+											<div id="file-content"></div>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading" role="tab" id="headingTwo">
+										<h4 class="panel-title">
+											<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+												Ripper rules tree
+											</a>
+										</h4>
+									</div>
+									<div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+										<div class="panel-body">
+											<h3 class="ripper-accuracy">Accuracy</h3>
+											<div id="network"></div>
+										</div>
+									</div>
+								</div>
+							</div>
                     	</div>
  					</div>
 				</div>
@@ -47,10 +85,17 @@
             var socket = io.connect(url);
 
             /* RIPPER */
-            socket.emit('get_ripper');
+            socket.emit('get_ripper', 4);
+
+			$('.nb-clusters').on('change', function(){
+				var nbCluster = $('.nb-clusters option:selected').val();
+				socket.emit('get_ripper', nbCluster);
+			});
 
             socket.on('return_info_ripper', function (ripperData) {
                 console.log(ripperData[1]);
+
+				$('.ripper-accuracy').html('Accuracy : ' + Math.round(ripperData[0], 2) + ' %');
 
                 var ripperNodes = [];
                 var ripperEdges = [];
@@ -105,7 +150,7 @@
                     nodes: nodes,
                     edges: edges
                 };
-                var canvasHeight = i*110 + 'px';
+                var canvasHeight = i*90 + 'px';
                 var options = {
                     width:'100%',
                     height: canvasHeight,
@@ -118,6 +163,12 @@
                 };
                 var network = new vis.Network(container, data, options);
             });
+
+			socket.on('return_test_file', function (testFile) {
+				console.log(testFile);
+				$('#file-content').html(testFile.replace(/@/g, '<br/>@'));
+			});
+
 		</script>
 	</body>
 </html>

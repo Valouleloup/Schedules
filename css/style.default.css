@@ -3314,6 +3314,15 @@ body.signin {
 
 .inline-block { display: inline-block; }
 
+#file-content{
+    font-size:9px;
+    margin-bottom:10px;
+}
+
+.nb-clusters{
+    margin-bottom:10px;
+}
+
 /**** CSS tableau d'horaires ****/
 .tg  {border-collapse:collapse;border-spacing:0;border-color:#999;border:none; text-align: center;}
 .tg td{font-family:Arial, sans-serif;font-size:12px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;}
