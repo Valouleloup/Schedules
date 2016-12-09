@@ -54,6 +54,11 @@ app.get('/ripper', function (req, res) {
   res.render('ripper');
 });
 
+//Horaires page
+app.get('/horaires', function (req, res) {
+  res.render('horaires');
+});
+
 console.log('Server ON');
 
 var colors = ['rgba(228,76,76,0.8)', 'rgba(224,177,91,0.8)', 'rgba(132,205,86,0.8)', 'rgba(86,205,195,0.8)',
