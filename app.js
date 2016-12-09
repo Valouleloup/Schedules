@@ -22,7 +22,7 @@ $().jquery;
 app.use(express.static(__dirname + '/'));
 
 // set the view engine to ejs
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs');
 
 // Home page
 /*app.get('/', function (req, res) {
@@ -30,24 +30,29 @@ app.set('view engine', 'ejs')
 });*/
 
 // Home page
-app.get('/', (req, res) => {
-  res.render('index')
-})
+app.get('/', function (req, res) {
+  res.render('index');
+});
+
+//Travel time page
+app.get('/traveltime', function (req, res) {
+    res.render('traveltime');
+});
 
 //DTW page
-app.get('/dtw', (req, res) => {
-  res.render('dtw')
-})
+app.get('/dtw', function (req, res) {
+  res.render('dtw');
+});
 
 //K-Means page
-app.get('/kmeans', (req, res) => {
-  res.render('kmeans')
-})
+app.get('/kmeans', function (req, res) {
+  res.render('kmeans');
+});
 
 //RIPPER page
-app.get('/ripper', (req, res) => {
-  res.render('ripper')
-})
+app.get('/ripper', function (req, res) {
+  res.render('ripper');
+});
 
 console.log('Server ON');
 
