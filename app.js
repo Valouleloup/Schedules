@@ -69,9 +69,19 @@ var clustersParsed;
 io.sockets.on('connection', function (socket) {
 
     /** K-MEANS */
-    socket.on('get_kmeans', function() {
+    socket.on('get_kmeans', function(nbClusters) {
 
-        PythonShell.run('C:\\Python27\\kmeans01.py', function (err, results) {
+        var options = {
+            mode: 'text',
+            pythonPath: 'C:\\Python27\\python.exe',
+            pythonOptions: ['-u'],
+            scriptPath: 'C:\\Python27\\',
+            args: [nbClusters]
+        };
+
+        PythonShell.run('kmeans01.py',options, function (err, results) {
+
+            console.log(err);
             clusters = results;
             clustersParsed = JSON.parse(clusters[0]);
 
@@ -100,7 +110,7 @@ io.sockets.on('connection', function (socket) {
 
         var exec = require('child_process').exec;
         var fileName = 'testK' + nbClusters + '.txt';
-        var child = exec('java -jar C:\\Python27\\java\\RipperProject.jar C:\\Python27\\java\\' + fileName,
+        var child = exec('java -jar C:\\Python27\\java\\RipperProject.jar C:\\Python27\\java\\' + fileName + ' 5 1 1 1',
             function (error, stdout, stderr){
                 var ripperData = JSON.parse(stdout);
                 //var rip = ["49.72375690607735",[["(christmastime = TRUE)","6"],["(daytype = weekend_holiday) and (eastertime =TRUE)","4"],["(daytype = weekend_holiday) and (month = 2)","4"],["(daytype = weekend_holiday) and (month = 3)","4"],["(daytype = holiday)","5"],["(daytype = weekend_holiday)","5"],["(nonschoolperiod = FALSE)","3"],["null","2"]],"8"];
@@ -122,14 +132,6 @@ io.sockets.on('connection', function (socket) {
 
     /** DTW */
     socket.on('get_dtw', function() {
-        /*PythonShell.run('C:\\Python27\\dtw1.py', function (err, results) {
-            var series = results;
-            var parsedSeries = JSON.parse(series[0]);
-
-            //console.log(parsedSeries);
-            console.log('DTW ok');
-            socket.emit('return_info_dtw', parsedSeries);
-         });*/
 
         PythonShell.run('C:\\Python27\\dtw2.py', function (err, results) {
             var parsedVariances = JSON.parse(results[0]);

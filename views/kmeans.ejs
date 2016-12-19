@@ -16,25 +16,18 @@
 			<div class="mainwrapper">
 				<%- include('partials/left-panel') %>
 				<div class="mainpanel">
-					<div class="pageheader">
-                        <div class="media">
-                            <div class="pageicon pull-left">
-                                <i class="fa fa-gear"></i>
-                            </div>
-                            <div class="media-body">
-                                <ul class="breadcrumb">
-                                    <li><a href="/"><i class="glyphicon glyphicon-home"></i></a></li>
-                                    <li>K-Means</li>
-                                </ul>
-                                <h4>K-Means</h4>
-                            </div>
-                        </div>
-                    </div>
-					<div class="contentpanel">
-					    <div class="row row-stat">
+					<%- include('partials/page-header') %>
+					 <div class="contentpanel">
+					 	<div class="row row-stat">
+							<select name="nb-clusters" class="nb-clusters" title="nb-clusters">
+								<option value="2">K = 2</option>
+								<option value="3">K = 3</option>
+								<option value="4" selected="selected">K = 4</option>
+								<option value="5">K = 5</option>
+							</select>
+                        	<h3>K-Means</h3>
                         	<div id="kmeans"></div>
                             <div id="loader" class="loading">
-                                <img src="images/loader.gif" alt="loader">
                             </div>
                         </div>
  					</div>
@@ -49,12 +42,18 @@
             var url = 'http://localhost:8080';
             var socket = io.connect(url);
 
+			var nbCluster = $('.nb-clusters option:selected').val();
+
             /*K-MEANS */
-            socket.emit('get_kmeans');
+            socket.emit('get_kmeans', nbCluster);
+
+			$('.nb-clusters').on('change', function(){
+				nbCluster = $('.nb-clusters option:selected').val();
+				socket.emit('get_kmeans', nbCluster);
+			});
 
             socket.on('return_info', function (data) {
                 console.log(data);
-                $("#loader").css('display', 'none');
 
                 Highcharts.chart('kmeans', {
                     chart: {
